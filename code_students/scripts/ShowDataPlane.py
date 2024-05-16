@@ -147,7 +147,7 @@ class data_plotter() :
         ax.azim = 30
         ax.elev = 20
         
-        ax.set_aspect('equal')
+        ax.set_aspect('auto')
         ax.set_box_aspect([1,1,1])
         
         ax.set_xlim([np.min(x_grid), np.max(x_grid)])
@@ -243,5 +243,5 @@ def analysis_3D_projected() :
             
 if __name__ == "__main__" :
     analysis_single_plane()
-    #analysis_3D()
-    #analysis_3D_projected()
+    analysis_3D()
+    analysis_3D_projected()
