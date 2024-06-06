@@ -24,6 +24,8 @@ set(CMAKE_CXX_FLAGS_DEBUG "-g -O0 -g2")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -mtune=native -DNDEBUG")
 
 find_package(HDF5 REQUIRED)
+find_package(MPI)
+
 MESSAGE(STATUS "HDF5_INCLUDE_DIRS: ${HDF5_INCLUDE_DIR}")
 
 # Make serial form of the library
@@ -34,7 +36,6 @@ target_link_libraries(SerialHdf5
 
 if(${HDF5_IS_PARALLEL})
   
-  find_package(MPI)
   MESSAGE(" Loaded MPI for parallel HDF5 ")
   MESSAGE(STATUS " Found include path at ${MPI_CXX_INCLUDE_PATH}")
 
