@@ -5,7 +5,7 @@
 #include "solver/time_integrator.hpp"
 #include "util/matrix.hpp"
 #include "util/utility_functions.hpp"
-#include <mpi.h>
+#include "mpi.h"
 
 #include <cmath>
 #include <functional>
