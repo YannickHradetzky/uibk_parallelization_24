@@ -5,8 +5,8 @@
 #include "solver/time_integrator.hpp"
 #include "util/matrix.hpp"
 #include "util/utility_functions.hpp"
-#include "mpi.h"
 #include "setup/mpi_handler.hpp"
+
 #include <cmath>
 #include <functional>
 #include <iostream>
@@ -34,26 +34,22 @@ void init_Sedov(fluid_cell &fluid, double x_position, double y_position, double 
 }
 
 
+void init_linear(fluid_cell &fluid, double x_position, double y_position, double z_position) {
+	fluid.fluid_data[0] = x_position;
+	fluid.fluid_data[1] = y_position;
+	fluid.fluid_data[2] = z_position;
+}
 
 
+int main(int argc, char *argv[]) {
 
-
-
-
-int main(int argc, char **argv) {
+	int ntasks, rank(0);
 	MPI_Init(&argc, &argv);
-	int rankNum, rankID;
-	MPI_Comm_size(MPI_COMM_WORLD,&rankNum);
-	MPI_Comm_rank(MPI_COMM_WORLD,&rankID);
-	std::cout << "My Rank ID = " << rankID << std::endl;
+	MPI_Comm_size(MPI_COMM_WORLD, &ntasks);
+	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
-	std::vector<int> ntasks(3);
-	ntasks[0] = 2;
-	ntasks[1] = 2;
-	ntasks[2] = 1;
+	std::cout << " I am using rank " << rank << " of " << ntasks << "\n";
 
-
-	mpi_handler parallel(ntasks);
 	
 	std::vector<double> bound_low(3), bound_up(3);
 	bound_low[0] = -0.5;
@@ -65,18 +61,37 @@ int main(int argc, char **argv) {
 	bound_up[2] = 0.5;
 
 	std::vector<int> num_cells(3);
-	num_cells[0] = 64;
-	num_cells[1] = 64;
-	num_cells[2] = 64;
+	num_cells[0] = 128;
+	num_cells[1] = 128;
+	num_cells[2] = 128;
+
+
+	std::vector<int> tasks(3);
+	tasks[0] = 2;
+	tasks[1] = 1;
+	tasks[2] = 1;
+
+	// Start the MPI handler
+	mpi_handler parallel_stuff(tasks);
+
+
 
 	grid_3D global_grid(bound_low, bound_up, num_cells, 2);
-	grid_3D my_grid = parallel.make_local_grid(global_grid);
+	// grid_3D my_grid(bound_low, bound_up, num_cells, 2);
+
+	// Now, create a local grid
+
+	grid_3D my_grid = parallel_stuff.make_local_grid(global_grid);
+
+	std::cout << " Anfang: " << my_grid.x_grid.get_center(0) << " " << my_grid.x_grid.get_left(0) << "\n";
+	int num = my_grid.get_num_cells(0);
+	std::cout << " Ende: " << my_grid.x_grid.get_center(num-1) << " " << my_grid.x_grid.get_left(num) << "\n";
 
 
 	// Get number of Sedov cells
 	Sedov_volume = 0.0;
 	int num_Sedov_cells = 0;
-	double volume_cell_local = my_grid.x_grid.get_dx() * my_grid.y_grid.get_dx() * my_grid.z_grid.get_dx();
+	double volume_cell = my_grid.x_grid.get_dx() * my_grid.y_grid.get_dx() * my_grid.z_grid.get_dx();
 
 	for (int ix = 0; ix < my_grid.get_num_cells(0); ++ix) {
 		double x_position = my_grid.x_grid.get_center(ix);
@@ -86,30 +101,46 @@ int main(int argc, char **argv) {
 				double z_position = my_grid.z_grid.get_center(iz);
 				double dist = sqrt(sim_util::square(x_position) + sim_util::square(y_position) + sim_util::square(z_position));
 				if (dist < 0.1) {
-					Sedov_volume += volume_cell_local;
+					Sedov_volume += volume_cell;
 					num_Sedov_cells++;
 				}
 			}
 		}
 	}
-	std::cout << " Volume of Sedov region: " << Sedov_volume << " in " << num_Sedov_cells << " cells\n";
-	
 
-	MPI_Finalize();
-	return 0;
+	// Global MPI communication for Sedov volume and corresponding number of cells
+	int local_num_Sedov_cells = num_Sedov_cells;
+	double local_Sedov_volume = Sedov_volume;
+
+	// TBD by students
+	MPI_Allreduce(&local_num_Sedov_cells, &num_Sedov_cells, 1, MPI_INT, MPI_SUM, parallel_stuff.comm3D);
+	MPI_Allreduce(&local_Sedov_volume, &Sedov_volume, 1, MPI_DOUBLE, MPI_SUM, parallel_stuff.comm3D);
+
+	if(parallel_stuff.get_rank()==0) {
+		std::cout << " Volume of Sedov region: " << Sedov_volume << " in " << num_Sedov_cells << " cells\n";
+	}
+
+	// MPI_Finalize();
+	// return 0;
+
+
+	
 
 	// Now, I will create a HD fluid
 	fluid hd_fluid(parallelisation::FluidType::adiabatic);
 	hd_fluid.setup(my_grid);
 
 	std::function<void(fluid_cell &, double, double, double)> function_init = init_Sedov;
+	// std::function<void(fluid_cell &, double, double, double)> function_init = init_linear;
 
-	finite_volume_solver solver(hd_fluid);
-	solver.set_init_function(function_init);
+	finite_volume_solver solver_parallel(hd_fluid, parallel_stuff, global_grid);
+	solver_parallel.set_init_function(function_init);
 
-	double t_final = 0.1;
+	double t_final = 0.01;
 	double dt_out = 0.005;
 
-	solver.run(my_grid, hd_fluid, t_final, dt_out);
+	solver_parallel.run(my_grid, hd_fluid, t_final, dt_out);
+
+	MPI_Finalize();
 	return 0;
 }

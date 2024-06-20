@@ -19,6 +19,8 @@ install(TARGETS run_full_code
     RUNTIME DESTINATION ${PROJECT_SOURCE_DIR}/bin
 )
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 #---------------------------------
 add_executable (run_full_code_parallel
     main_full_code_parallel.cpp

@@ -1,0 +1,70 @@
+My Rank ID = 0
+ Running in parallel with 4 tasks 
+My Rank ID = 3
+My Rank ID = 1
+My Rank ID = 2
+ Created new tasks 0
+ MPI coordinates for rank 0 -> 0 0 0
+ Constructor
+ axes
+wtf
+ Making linear grid from -0.5 0.5 with 64 cells
+ Making linear grid from -0.5 0.5 with 64 cells
+ Making linear grid from -0.5 0.5 with 64 cells
+ Properties of grid 0 -0.5 -0.5 -0.5 0 0 0.5 
+ Constructor
+ axes
+wtf
+ Making linear grid from -0.5 0 with 32 cells
+ Making linear grid from -0.5 0 with 32 cells
+ Making linear grid from -0.5 0.5 with 64 cells
+ Created new tasks 1
+ MPI coordinates for rank 1 -> 0 1 0
+ Constructor
+ axes
+wtf
+ Making linear grid from -0.5 0.5 with 64 cells
+ Making linear grid from -0.5 0.5 with 64 cells
+ Making linear grid from -0.5 0.5 with 64 cells
+ Created new tasks 2
+ MPI coordinates for rank 2 -> 1 0 0
+ Constructor
+ axes
+wtf
+ Making linear grid from -0.5 0.5 with 64 cells
+ Making linear grid from -0.5 0.5 with 64 cells
+ Making linear grid from -0.5 0.5 with 64 cells
+ Created new tasks 3
+ MPI coordinates for rank 3 -> 1 1 0
+ Constructor
+ axes
+wtf
+ Making linear grid from -0.5 0.5 with 64 cells
+ Making linear grid from -0.5 0.5 with 64 cells
+ Making linear grid from -0.5 0.5 with 64 cells
+ Properties of grid 2 0 -0.5 -0.5 0.5 0 0.5 
+ Constructor
+ axes
+wtf
+ Making linear grid from 0 0.5 with 32 cells
+ Making linear grid from -0.5 0 with 32 cells
+ Making linear grid from -0.5 0.5 with 64 cells
+ Properties of grid 3 0 0 -0.5 0.5 0.5 0.5 
+ Constructor
+ axes
+wtf
+ Making linear grid from 0 0.5 with 32 cells
+ Making linear grid from 0 0.5 with 32 cells
+ Making linear grid from -0.5 0.5 with 64 cells
+ Properties of grid 1 -0.5 0 -0.5 0 0.5 0.5 
+ Constructor
+ axes
+wtf
+ Making linear grid from -0.5 0 with 32 cells
+ Making linear grid from 0 0.5 with 32 cells
+ Making linear grid from -0.5 0.5 with 64 cells
+ Volume of Sedov region: 0.0010376 in 272 cells
+ Volume of Sedov region: 0.0010376 in 272 cells
+ Volume of Sedov region: 0.0010376 in 272 cells
+ Volume of Sedov region: 0.0010376 in 272 cells
+ Total Sedov Volume = 0.00415039
