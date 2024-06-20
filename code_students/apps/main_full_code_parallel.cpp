@@ -6,7 +6,7 @@
 #include "util/matrix.hpp"
 #include "util/utility_functions.hpp"
 #include "mpi.h"
-
+#include "setup/mpi_handler.hpp"
 #include <cmath>
 #include <functional>
 #include <iostream>
@@ -33,15 +33,28 @@ void init_Sedov(fluid_cell &fluid, double x_position, double y_position, double 
 	fluid.fluid_data[fluid.get_index_v_z()] = 0.0;
 }
 
+
+
+
+
+
+
+
 int main(int argc, char **argv) {
 	MPI_Init(&argc, &argv);
 	int rankNum, rankID;
 	MPI_Comm_size(MPI_COMM_WORLD,&rankNum);
 	MPI_Comm_rank(MPI_COMM_WORLD,&rankID);
 	std::cout << "My Rank ID = " << rankID << std::endl;
-	MPI_Finalize();
-	return 0; 
 
+	std::vector<int> ntasks(3);
+	ntasks[0] = 2;
+	ntasks[1] = 2;
+	ntasks[2] = 1;
+
+
+	mpi_handler parallel(ntasks);
+	
 	std::vector<double> bound_low(3), bound_up(3);
 	bound_low[0] = -0.5;
 	bound_low[1] = -0.5;
@@ -56,12 +69,14 @@ int main(int argc, char **argv) {
 	num_cells[1] = 64;
 	num_cells[2] = 64;
 
-	grid_3D my_grid(bound_low, bound_up, num_cells, 2);
+	grid_3D global_grid(bound_low, bound_up, num_cells, 2);
+	grid_3D my_grid = parallel.make_local_grid(global_grid);
+
 
 	// Get number of Sedov cells
 	Sedov_volume = 0.0;
 	int num_Sedov_cells = 0;
-	double volume_cell = my_grid.x_grid.get_dx() * my_grid.y_grid.get_dx() * my_grid.z_grid.get_dx();
+	double volume_cell_local = my_grid.x_grid.get_dx() * my_grid.y_grid.get_dx() * my_grid.z_grid.get_dx();
 
 	for (int ix = 0; ix < my_grid.get_num_cells(0); ++ix) {
 		double x_position = my_grid.x_grid.get_center(ix);
@@ -71,13 +86,17 @@ int main(int argc, char **argv) {
 				double z_position = my_grid.z_grid.get_center(iz);
 				double dist = sqrt(sim_util::square(x_position) + sim_util::square(y_position) + sim_util::square(z_position));
 				if (dist < 0.1) {
-					Sedov_volume += volume_cell;
+					Sedov_volume += volume_cell_local;
 					num_Sedov_cells++;
 				}
 			}
 		}
 	}
 	std::cout << " Volume of Sedov region: " << Sedov_volume << " in " << num_Sedov_cells << " cells\n";
+	
+
+	MPI_Finalize();
+	return 0;
 
 	// Now, I will create a HD fluid
 	fluid hd_fluid(parallelisation::FluidType::adiabatic);
