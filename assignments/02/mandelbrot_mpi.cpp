@@ -163,6 +163,7 @@ int main(int argc, char **argv) {
 	MPI_Gather(&image_chunk, len_chunks, MPI_INT, &image, len_chunks, MPI_INT, 0, MPI_COMM_WORLD);
 
 	constexpr int stride_bytes = 0;
+	stbi_write_png("mandelbrot_mpi.png", size_x, size_y, num_channels, image.data(), stride_bytes);
 
 	if(rankID==0)
 	{
