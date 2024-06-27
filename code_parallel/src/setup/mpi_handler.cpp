@@ -62,19 +62,16 @@ grid_3D mpi_handler::make_local_grid(const grid_3D &global_grid) {
 
 	// Obtain properties of global grid
 	std::vector<int> num_cells_global(3);
-	// TBD by students
 	num_cells_global[0] = global_grid.get_num_cells(0);
 	num_cells_global[1] = global_grid.get_num_cells(1);
 	num_cells_global[2] = global_grid.get_num_cells(2);
 
 	std::vector<double> bound_low_global(3);
-	// TBD by students
 	bound_low_global[0] = global_grid.x_grid.get_left(0);
 	bound_low_global[1] = global_grid.y_grid.get_left(0);
 	bound_low_global[2] = global_grid.z_grid.get_left(0);
 
 	std::vector<double> bound_up_global(3);
-	// TBD by students
 	bound_up_global[0] = global_grid.x_grid.get_left(num_cells_global[0]);
 	bound_up_global[1] = global_grid.y_grid.get_left(num_cells_global[1]);
 	bound_up_global[2] = global_grid.z_grid.get_left(num_cells_global[2]);
@@ -95,7 +92,6 @@ grid_3D mpi_handler::make_local_grid(const grid_3D &global_grid) {
 	for(int i_dim=0; i_dim<3; ++i_dim) {
 		// First check if division is possible
 		if(num_cells_global[i_dim] % num_tasks[i_dim] == 0) {
-			// TBD by students
 			num_cells_local[i_dim] = num_cells_global[i_dim] / num_tasks[i_dim];
 		} else {
 			std::cerr << " Only considering homogeneous distribution \n";
@@ -112,7 +108,6 @@ grid_3D mpi_handler::make_local_grid(const grid_3D &global_grid) {
 		// Compute lower boundary for current task in current direction
 		bound_low_local[i_dim] = bound_low_global[i_dim] + spatial_shift[i_dim];
 		// Compute upper boundary for current task in current dimension
-		// TBD by students
 		bound_up_local[i_dim] = bound_low_local[i_dim] + size_cell[i_dim] * num_cells_local[i_dim];
 	}
 
@@ -125,7 +120,6 @@ grid_3D mpi_handler::make_local_grid(const grid_3D &global_grid) {
 
 
 	// With this, we can create a local grid
-	// TBD by students.
 	grid_3D local_grid(bound_low_local, bound_up_local, num_cells_local, 2);
 
 	return local_grid;

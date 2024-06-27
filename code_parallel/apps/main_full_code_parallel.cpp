@@ -112,7 +112,6 @@ int main(int argc, char *argv[]) {
 	int local_num_Sedov_cells = num_Sedov_cells;
 	double local_Sedov_volume = Sedov_volume;
 
-	// TBD by students
 	MPI_Allreduce(&local_num_Sedov_cells, &num_Sedov_cells, 1, MPI_INT, MPI_SUM, parallel_stuff.comm3D);
 	MPI_Allreduce(&local_Sedov_volume, &Sedov_volume, 1, MPI_DOUBLE, MPI_SUM, parallel_stuff.comm3D);
 
