@@ -37,7 +37,6 @@
 	rank = parallel_handler.get_rank();
 #endif
 
-
 	init_set = false;
 	write_next_step = false;
 	verbosity = 0;
