@@ -69,7 +69,7 @@ int main(int argc, char *argv[]) {
 	std::vector<int> tasks(3);
 	tasks[0] = 2;
 	tasks[1] = 1;
-	tasks[2] = 1;
+	tasks[2] = 2;
 
 	// Start the MPI handler
 	mpi_handler parallel_stuff(tasks);
@@ -121,9 +121,6 @@ int main(int argc, char *argv[]) {
 
 	// MPI_Finalize();
 	// return 0;
-
-
-	
 
 	// Now, I will create a HD fluid
 	fluid hd_fluid(parallelisation::FluidType::adiabatic);

@@ -1,10 +1,324 @@
---------------------------------------------------------------------------
-mpiexec was unable to launch the specified application as it could not access
-or execute an executable:
-
-Executable: ./code_parallel/build/apps/run_full_code_parallel
-Node: n002
-
-while attempting to start process rank 0.
---------------------------------------------------------------------------
-4 total processes failed to start
+ I am using rank 0 of 4
+ Running in parallel with 4 tasks 
+ I am using rank 2 of 4
+ I am using rank 1 of 4
+ I am using rank 3 of 4
+ Created new tasks 2
+ MPI coordinates for rank 2 -> 1 0 0
+ Constructor
+ axes
+wtf
+ Making linear grid from -0.5 0.5 with 128 cells
+ Making linear grid from -0.5 0.5 with 128 cells
+ Making linear grid from -0.5 0.5 with 128 cells
+ Properties of grid 2 0 -0.5 -0.5 0.5 0.5 0 
+ Created new tasks 0
+ MPI coordinates for rank 0 -> 0 0 0
+ Constructor
+ axes
+wtf
+ Making linear grid from -0.5 0.5 with 128 cells
+ Making linear grid from -0.5 0.5 with 128 cells
+ Making linear grid from -0.5 0.5 with 128 cells
+ Properties of grid 0 -0.5 -0.5 -0.5 0 0.5 0 
+ Constructor
+ axes
+wtf
+ Created new tasks 1
+ MPI coordinates for rank 1 -> 0 0 1
+ Constructor
+ axes
+wtf
+ Making linear grid from -0.5 0.5 with 128 cells
+ Making linear grid from -0.5 0.5 with 128 cells
+ Making linear grid from -0.5 0.5 with 128 cells
+ Properties of grid 1 -0.5 -0.5 0 0 0.5 0.5 
+ Constructor
+ axes
+wtf
+ Making linear grid from -0.5 0 with 64 cells
+ Created new tasks 3
+ MPI coordinates for rank 3 -> 1 0 1
+ Constructor
+ axes
+wtf
+ Making linear grid from -0.5 0.5 with 128 cells
+ Making linear grid from -0.5 0.5 with 128 cells
+ Making linear grid from -0.5 0.5 with 128 cells
+ Properties of grid 3 0 -0.5 0 0.5 0.5 0.5 
+ Constructor
+ axes
+wtf
+ Making linear grid from 0 0.5 with 64 cells
+ Making linear grid from -0.5 0.5 with 128 cells
+ Making linear grid from 0 0.5 with 64 cells
+ Anfang: -0.496094 -0.5
+ Ende: -0.00390625 0
+ Constructor
+ axes
+wtf
+ Making linear grid from 0 0.5 with 64 cells
+ Making linear grid from -0.5 0.5 with 128 cells
+ Making linear grid from -0.5 0 with 64 cells
+ Anfang: 0.00390625 0
+ Ende: 0.496094 0.5
+ Making linear grid from -0.5 0 with 64 cells
+ Making linear grid from -0.5 0.5 with 128 cells
+ Making linear grid from -0.5 0 with 64 cells
+ Anfang: -0.496094 -0.5
+ Ende: -0.00390625 0
+ Making linear grid from -0.5 0.5 with 128 cells
+ Making linear grid from 0 0.5 with 64 cells
+ Anfang: 0.00390625 0
+ Ende: 0.496094 0.5
+ Volume of Sedov region: 0.00416946 in 8744 cells
+ resizing field 0:
+ resizing field 0:
+ resizing field 0:
+ resizing field 0:
+ -> 610368
+ resizing field 1:
+ -> 610368
+ resizing field 1:
+ -> 610368
+ resizing field 1:
+ -> 610368
+ resizing field 1:
+ -> 610368
+ resizing field 2:
+ -> 610368
+ resizing field 2:
+ -> 610368
+ resizing field 2:
+ -> 610368
+ resizing field 2:
+ -> 610368
+ resizing field 3:
+ -> 610368
+ resizing field 3:
+ -> 610368
+ resizing field 3:
+ -> 610368
+ resizing field 3:
+ -> 610368
+ resizing field 4:
+ -> 610368
+ resizing field 4:
+ -> 610368
+ resizing field 4:
+ -> 610368
+ resizing field 4:
+ -> 610368
+ resizing field 5:
+ -> 610368
+ resizing field 5:
+ -> 610368
+ resizing field 5:
+ -> 610368
+ resizing field 5:
+ -> 610368
+ -> 610368
+ -> 610368
+ -> 610368
+ resizing field 0:
+ resizing field 0:
+ resizing field 0:
+ resizing field 0:
+ -> 610368
+ resizing field 1:
+ -> 610368
+ resizing field 1:
+ -> 610368
+ resizing field 1:
+ -> 610368
+ resizing field 1:
+ -> 610368
+ resizing field 2:
+ -> 610368
+ resizing field 2:
+ -> 610368
+ resizing field 2:
+ -> 610368
+ resizing field 2:
+ -> 610368
+ resizing field 3:
+ -> 610368
+ resizing field 3:
+ -> 610368
+ resizing field 3:
+ -> 610368
+ resizing field 3:
+ -> 610368
+ resizing field 4:
+ -> 610368
+ resizing field 4:
+ -> 610368
+ resizing field 4:
+ -> 610368
+ resizing field 4:
+ -> 610368
+ resizing field 5:
+ -> 610368
+ resizing field 5:
+ -> 610368
+ resizing field 5:
+ -> 610368
+ resizing field 5:
+ -> 610368
+ resizing field 0:
+ -> 610368
+ resizing field 0:
+ -> 610368
+ resizing field 0:
+ -> 610368
+ resizing field 0:
+ -> 610368
+ resizing field 1:
+ -> 610368
+ resizing field 1:
+ -> 610368
+ resizing field 1:
+ -> 610368
+ resizing field 1:
+ -> 610368
+ resizing field 2:
+ -> 610368
+ resizing field 2:
+ -> 610368
+ resizing field 2:
+ -> 610368
+ resizing field 2:
+ -> 610368
+ resizing field 3:
+ -> 610368
+ resizing field 3:
+ -> 610368
+ resizing field 3:
+ -> 610368
+ resizing field 3:
+ -> 610368
+ resizing field 4:
+ -> 610368
+ resizing field 4:
+ -> 610368
+ resizing field 4:
+ -> 610368
+ resizing field 4:
+ -> 610368
+ resizing field 5:
+ -> 610368
+ resizing field 5:
+ -> 610368
+ resizing field 5:
+ -> 610368
+ resizing field 5:
+ -> 610368
+ -> 610368
+ -> 610368
+ -> 610368
+ CFL number 1483.42
+ Integrating time step 0 at t =0
+ 		 step size 0.000269647
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 1
+ Doing Runge-Kutta step 1
+ Doing Runge-Kutta step 1
+ Doing Runge-Kutta step 1
+ CFL number 1611.53
+ Integrating time step 1 at t =0.000269647
+ 		 step size 0.000248212
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 1
+ Doing Runge-Kutta step 1
+ Doing Runge-Kutta step 1
+ Doing Runge-Kutta step 1
+ CFL number 1652.23
+ Integrating time step 2 at t =0.000517859
+ 		 step size 0.000242097
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 1
+ Doing Runge-Kutta step 1
+ Doing Runge-Kutta step 1
+ Doing Runge-Kutta step 1
+ CFL number 1707.86
+ Integrating time step 3 at t =0.000759956
+ 		 step size 0.000234212
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 1
+ Doing Runge-Kutta step 1
+ Doing Runge-Kutta step 1
+ Doing Runge-Kutta step 1
+ CFL number 1763.43
+ Integrating time step 4 at t =0.000994168
+ 		 step size 0.000226831
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 1
+ Doing Runge-Kutta step 1
+ Doing Runge-Kutta step 1
+ Doing Runge-Kutta step 1
+ CFL number 1818.54
+ Integrating time step 5 at t =0.001221
+ 		 step size 0.000219956
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 1
+ Doing Runge-Kutta step 1
+ Doing Runge-Kutta step 1
+ Doing Runge-Kutta step 1
+ CFL number 1858.82
+ Integrating time step 6 at t =0.00144096
+ 		 step size 0.00021519
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 1
+ Doing Runge-Kutta step 1
+ Doing Runge-Kutta step 1
+ Doing Runge-Kutta step 1
+ CFL number 1892.54
+ Integrating time step 7 at t =0.00165615
+ 		 step size 0.000211356
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 1
+ Doing Runge-Kutta step 1
+ Doing Runge-Kutta step 1
+ Doing Runge-Kutta step 1
+ CFL number 1927.47
+ Integrating time step 8 at t =0.0018675
+ 		 step size 0.000207526
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 1
+ Doing Runge-Kutta step 1
+ Doing Runge-Kutta step 1
+ Doing Runge-Kutta step 1
+ CFL number 1962.55
+ Integrating time step 9 at t =0.00207503
+ 		 step size 0.000203816
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0
+ Doing Runge-Kutta step 0

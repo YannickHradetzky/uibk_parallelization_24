@@ -20,7 +20,7 @@
 
 # Maximum number of tasks (=processes) to start per node
 
-#SBATCH --ntasks-per-node=1
+#SBATCH --ntasks-per-node=4
 
 # Enforce exclusive node allocation, do not share with other jobs
 
@@ -30,6 +30,4 @@
 
 module load openmpi/3.1.6-gcc-12.2.0-d2gmn55
 
-
-
-mpiexec -n $SLURM_NTASKS ./code_parallel/build/apps/run_full_code_parallel
+mpiexec -n $SLURM_NTASKS /scratch/cb761149/uibk_parallelization_24/code_parallel/build/apps/run_full_code.parallel
